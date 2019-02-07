@@ -1,16 +1,20 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import logger from 'redux-logger'
 
+import * as Appointments from './Appointments';
 
 export default function configureStore (history, initialState) {
   const reducers = {
-  
+    appointments: Appointments.reducer
   };
 
   const middleware = [
     thunk,
-    routerMiddleware(history)
+    
+    routerMiddleware(history),
+    logger,
   ];
 
   // In development, use the browser's Redux dev tools extension if installed
