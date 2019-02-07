@@ -55,7 +55,7 @@ class Apppintments extends React.Component {
           defaultCurrentDate={currentDate}
           height={700}
           startDayHour={9}
-          endDayHour={16}
+          endDayHour={23}
           crossScrollingEnabled={true}>
           <Resource
             fieldExpr={'priorityId'}

@@ -4,8 +4,8 @@ const initialState = {
         {
             text: 'Website Re-Design Plan',
             priorityId: 2,
-            startDate: new Date(2019, 1, 7, 9, 30),
-            endDate: new Date(2019, 1, 7, 11, 30)
+            startDate: new Date(),
+            endDate: new Date(2019, 1, 7, 20, 30)
         }, {
             text: 'Book Flights to San Fran for Sales Trip',
             priorityId: 1,

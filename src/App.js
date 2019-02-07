@@ -12,9 +12,10 @@ import Appointments from './components/Appointments'
 
 class App extends Component {
   render() {
+    const { increment } = this.props;
     return (
       <div>
-        <Button text='Example Button' onClick={this.props.increment} />
+        <Button text='Example Button' onClick={increment} />
         Appointments
         <Appointments />
       </div>
