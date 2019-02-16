@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from './store/Appointments';
-
-import Button from 'devextreme-react/button';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'devextreme/dist/css/dx.common.css';
 import 'devextreme/dist/css/dx.light.compact.css';
+import Appointments from './components/Appointments';
+import EditAppointment from './components/EditAppointment';
 
-import Appointments from './components/Appointments'
 
 class App extends Component {
   render() {
-    const { increment } = this.props;
+
     return (
-      <div>
-        <Button text='Example Button' onClick={increment} />
-        Appointments
-        <Appointments />
-      </div>
+      <Router>
+        <div>
+          <Route exact path='/' component={Appointments} />
+          <Route path='/edit_appointment/:appointmentId' component={EditAppointment} />
+        </div>
+      </Router>
     );
   }
 }
