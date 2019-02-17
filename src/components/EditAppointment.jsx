@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import { withRouter } from 'react-router-dom';
 
 class EditAppointment extends Component {
   state = {
@@ -32,6 +33,7 @@ class EditAppointment extends Component {
               initialValues={{ ...this.state.toEditAppointment }}
               onSubmit={(values) => {
                 console.warn('update.(this.appointmentId(), {...values}) // call fake api', values);
+                this.props.history.push('/');
               }}
               validate={values => {
                 let errors = {};
@@ -82,4 +84,4 @@ class EditAppointment extends Component {
   }
 }
 
-export default EditAppointment;
+export default withRouter(EditAppointment);
