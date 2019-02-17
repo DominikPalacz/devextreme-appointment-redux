@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
 import { withRouter } from 'react-router-dom';
+import * as _ from 'ramda';
 
 class EditAppointment extends Component {
   state = {
     toEditAppointment: null,
     fetched: false,
+    disabled: false,
   }
 
   appointmentId = () => this.props.match.params.appointmentId;
@@ -38,10 +40,17 @@ class EditAppointment extends Component {
               validate={values => {
                 let errors = {};
                 if (!values.email) {
-                  errors.email = 'Required'
+                  errors.email = 'Required';
                 } else if (values.email.length < 3) {
-                  errors.email = 'Min 3 characters'
+                  errors.email = 'Min 3 characters';
                 }
+
+                if (_.isEmpty(errors)) {
+                  this.setState({ disabled: false });
+                } else {
+                  this.setState({ disabled: true });
+                }
+
                 return errors;
               }}
               render={({
@@ -68,7 +77,7 @@ class EditAppointment extends Component {
                     </div>
                     <div className='field is-grouped'>
                       <div className='control'>
-                        <button type='submit' className='button is-link'>
+                        <button type='submit' className='button is-link' disabled={this.state.disabled}>
                           Submit
                         </button>
                       </div>

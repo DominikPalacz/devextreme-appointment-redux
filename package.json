@@ -8,6 +8,7 @@
     "devextreme-react": "^18.2.5",
     "formik": "^1.5.0",
     "node-sass": "^4.11.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
