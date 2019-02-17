@@ -24,14 +24,23 @@ class EditAppointment extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="container is-fluid">
-        <div className="notification">
+      <div className='container is-fluid'>
+        <div className='notification'>
           Edit from for {this.props.match.params.appointmentId}
           {this.state.fetched
             ? <Formik
               initialValues={{ ...this.state.toEditAppointment }}
               onSubmit={(values) => {
                 console.warn('update.(this.appointmentId(), {...values}) // call fake api', values);
+              }}
+              validate={values => {
+                let errors = {};
+                if (!values.email) {
+                  errors.email = 'Required'
+                } else if (values.email.length < 3) {
+                  errors.email = 'Min 3 characters'
+                }
+                return errors;
               }}
               render={({
                 values,
@@ -43,13 +52,25 @@ class EditAppointment extends Component {
                 isSubmitting
               }) => (
                   <form onSubmit={handleSubmit}>
-                    <input
-                      type='text'
-                      name='email'
-                      onChange={handleChange}
-                      value={values.email}
-                    />
-                    <button type='submit'>Update</button>
+                    <div className='field'>
+                      <label className='label'>Email</label>
+                      <div className='control'>
+                        <input
+                          type='text'
+                          name='email'
+                          onChange={handleChange}
+                          value={values.email}
+                        />
+                      </div>
+                      <p className='help is-danger'>{errors.email}</p>
+                    </div>
+                    <div className='field is-grouped'>
+                      <div className='control'>
+                        <button type='submit' className='button is-link'>
+                          Submit
+                        </button>
+                      </div>
+                    </div>
                   </form>
                 )}
             />
