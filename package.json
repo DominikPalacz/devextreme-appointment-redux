@@ -6,6 +6,7 @@
     "bulma": "^0.7.4",
     "devextreme": "^18.2.5",
     "devextreme-react": "^18.2.5",
+    "formik": "^1.5.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
