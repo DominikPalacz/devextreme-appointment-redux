@@ -24,36 +24,38 @@ class EditAppointment extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        Edit from for {this.props.match.params.appointmentId}
-        {this.state.fetched
-          ? <Formik
-            initialValues={{ ...this.state.toEditAppointment }}
-            onSubmit={(values) => {
-              console.warn('update.(this.appointmentId(), {...values}) // call fake api', values);
-            }}
-            render={({
-              values,
-              errors,
-              touched,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting
-            }) => (
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type='text'
-                    name='email'
-                    onChange={handleChange}
-                    value={values.email}
-                  />
-                  <button type='submit'>Update</button>
-                </form>
-              )}
-          />
-          : <p>Loading...</p>
-        }
+      <div className="container is-fluid">
+        <div className="notification">
+          Edit from for {this.props.match.params.appointmentId}
+          {this.state.fetched
+            ? <Formik
+              initialValues={{ ...this.state.toEditAppointment }}
+              onSubmit={(values) => {
+                console.warn('update.(this.appointmentId(), {...values}) // call fake api', values);
+              }}
+              render={({
+                values,
+                errors,
+                touched,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+                isSubmitting
+              }) => (
+                  <form onSubmit={handleSubmit}>
+                    <input
+                      type='text'
+                      name='email'
+                      onChange={handleChange}
+                      value={values.email}
+                    />
+                    <button type='submit'>Update</button>
+                  </form>
+                )}
+            />
+            : <p>Loading...</p>
+          }
+        </div>
       </div>
     )
   }
