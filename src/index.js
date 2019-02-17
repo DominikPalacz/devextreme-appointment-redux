@@ -5,6 +5,7 @@ import configureStore from './store/configureStore';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './index.scss';
 
 const initialState = window.initialReduxState;
 const store = configureStore(initialState);
